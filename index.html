@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Retro Cassette Tape Design</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="cassette-body">
+    <div class="titletext">
+      <h1>ROCKSTAR MIXTAPES</h1>
+    </div>
+
+    <div class="cassette-card">
+      <div class="cassette">
+        <div class="label-top">
+          <span>THE <span class="highlight-hukum">HUKUM</span> EXPERIENCE</span>
+        </div>
+        <div class="tape-title">
+          <span>FURY TAPE</span>
+        </div>
+        <div class="main-body">
+          <div class="holes">
+            <div class="hole">
+              <div class="teeth"></div>
+              <div class="teeth"></div>
+              <div class="teeth"></div>
+              <div class="teeth"></div>
+            </div>
+            <div class="middle-section">
+              <div class="play-button">
+                <i class="fas fa-play-circle" id="playButton"></i>
+              </div>
+            </div>
+            <div class="hole">
+              <div class="teeth"></div>
+              <div class="teeth"></div>
+              <div class="teeth"></div>
+              <div class="teeth"></div>
+            </div>
+          </div>
+          <div class="bottom-label">
+            <span></span>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <progress id="songProgress" value="0" max="100"></progress>
+        </div>
+      </div>
+
+      <div class="song-container">
+        <div class="song-display">
+          <label for="songDropdown">Playlist</label>
+          <div id="posterDisplay" class="posterDisplay">
+            <img
+              id="posterImage"
+              class="posterImage"
+              src="Default1.png"
+              alt="Song Poster"
+            />
+          </div>
+        </div>
+        <div class="song-info">
+          <p id="currentSong">NONE PLAYING</p>
+        </div>
+      </div>
+
+      <div class="song-selector">
+        <img
+          src="hukum.png"
+          onclick="changeSong('Hukum.mp3')"
+          class="song-icon"
+        />
+        <img
+          src="leo.png"
+          onclick="changeSong('Badass.mp3')"
+          class="song-icon"
+        />
+        <img
+          src="devara.png"
+          onclick="changeSong('Fear Song.mp3')"
+          class="song-icon"
+        />
+        <img
+          src="Vikram.png"
+          onclick="changeSong('Once Upon a Time.mp3')"
+          class="song-icon"
+        />
+        <img
+          src="Jawan.png"
+          onclick="changeSong('Jawan.mp3')"
+          class="song-icon"
+        />
+      </div>
+    </div>
+
+    <script>
+      var playButton = document.getElementById("playButton");
+      var audio = new Audio();
+      var songProgress = document.getElementById("songProgress");
+      var holes = document.querySelectorAll(".hole");
+
+      playButton.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play();
+          playButton.classList.replace("fa-play-circle", "fa-pause-circle");
+          holes.forEach((hole) => (hole.style.animationPlayState = "running"));
+        } else {
+          audio.pause();
+          playButton.classList.replace("fa-pause-circle", "fa-play-circle");
+          holes.forEach((hole) => (hole.style.animationPlayState = "paused"));
+        }
+      });
+
+      audio.addEventListener("timeupdate", function () {
+        songProgress.value = audio.currentTime;
+        songProgress.max = audio.duration;
+      });
+
+      function changeSong(songFile) {
+        if (!songFile) return;
+
+        var currentSong = document.getElementById("currentSong");
+        audio.src = songFile;
+        audio.load();
+        audio.play();
+        playButton.classList.replace("fa-play-circle", "fa-pause-circle");
+        currentSong.textContent = songFile.split(".")[0].replace(/-/g, " ");
+        holes.forEach((hole) => (hole.style.animationPlayState = "running"));
+
+        // Update poster display
+        var poster = determinePoster(songFile);
+        var posterImage = document.getElementById("posterImage");
+        posterImage.src = poster;
+      }
+
+      function determinePoster(songFile) {
+        switch (songFile) {
+          case "Hukum.mp3":
+            return "JailerPoster.png";
+          case "Badass.mp3":
+            return "LeoPoster.png";
+          case "Fear Song.mp3":
+            return "DevaraPoster.png";
+          case "Once Upon a Time.mp3":
+            return "VikramPoster.png";
+          case "Jawan.mp3":
+            return "JawanPoster.png";
+          default:
+            return "Default1.png";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,330 @@
+/* Root variables for easy theme management */
+:root {
+  --arrow-icon: url("https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg");
+  --select-bg: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly transparent background for the dropdown */
+  --option-bg: white; /* Background color for options */
+}
+.cassette-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("https://pbs.twimg.com/media/F_n95U3XEAAh4qU?format=jpg&name=4096x4096");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-direction: column;
+}
+.titletext {
+  margin-bottom: 2rem;
+  font-family: "Permanent Marker", cursive;
+  color: #fbbf24;
+  font-size: 5rem;
+  position: absolute;
+  top: 0; /* Position at the top */
+  left: 0;
+  margin-top: 40px;
+  width: 100%; /* Span the entire width */
+  text-align: center; /* Center align text */
+  padding: 20px; /* Add padding if needed */
+
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+.cassette-card {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the cassette and selector */
+}
+
+.cassette {
+  width: 40rem;
+  height: 27rem;
+  border-radius: 5%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("https://as2.ftcdn.net/v2/jpg/01/93/46/23/1000_F_193462376_MM350S5xAbmD1ilxLHZKBAh8NkaJvFP8.jpg");
+}
+
+.label-top,
+.tape-title,
+.main-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.label-top {
+  height: 33%;
+  background-color: #1e3a8a;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 3pt;
+}
+
+.highlight-hukum {
+  font-family: "Permanent Marker", cursive;
+  color: #fbbf24;
+}
+
+.tape-title {
+  height: 16.5%;
+  background-color: #f5bd02;
+  color: #e90f0f;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 50px;
+  letter-spacing: 3pt;
+}
+
+.main-body {
+  flex-direction: column;
+  height: 50.5%;
+  background-color: #dc2626;
+  border-radius: 0 0 0.5rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holes {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.hole {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  background-color: #f4edd6;
+  border-radius: 50%;
+  animation: rotate 2s infinite linear;
+  animation-play-state: paused;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.teeth {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #69696b;
+}
+
+.teeth:nth-child(1) {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.teeth:nth-child(2) {
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+.teeth:nth-child(3) {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.teeth:nth-child(4) {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-button {
+  cursor: pointer;
+  font-size: 36px;
+  color: white;
+}
+
+.bottom-label {
+  text-align: center;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 90%;
+  margin-bottom: 1rem; /* Adjusted to ensure it doesn't touch the border */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.progress-bar progress {
+  width: 100%;
+  height: 5px;
+  background-color: #d1d5db;
+}
+
+.progress-bar progress::-webkit-progress-value {
+  background-color: #fbbf24;
+}
+
+.progress-bar progress::-moz-progress-bar {
+  background-color: #fbbf24;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .cassette {
+    width: 90%;
+    height: auto;
+    border: 1rem solid black;
+  }
+
+  .titletext {
+    font-size: 3rem;
+  }
+
+  .hole {
+    width: 50px;
+    height: 50px;
+  }
+
+  .progress-bar {
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .titletext {
+    font-size: 2rem;
+  }
+
+  .play-button {
+    font-size: 24px;
+  }
+}
+
+.text-on-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.song-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 200px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  background-image: url("https://i.ibb.co/qBwzbX0/silhoutte-transformed.jpg");
+  background-size: cover; /* Using 'cover' might be more effective than 'contain' depending on the image */
+  background-repeat: no-repeat; /* Ensure the background does not repeat */
+  margin-left: 40px; /* Left margin */
+}
+
+.song-display label {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #ef2a02; /* Change this to your desired color */
+  margin-bottom: 10px; /* Add some space below the label */
+  text-align: center; /* Center align the label text */
+  font-family: "Permanent Marker", cursive; /* Apply custom font */
+}
+
+.song-selector {
+  width: 40px;
+  height: 320px;
+  background-color: #ef2a02;
+  margin-left: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers icons vertically */
+  padding: 50px 0; /* Adds padding top and bottom */
+}
+
+.song-selector .song-icon {
+  width: 30px; /* Slightly reduce width to ensure it fits well with margin */
+  height: 30px; /* Reduce height similarly */
+  cursor: pointer;
+  margin: 10px auto; /* Increase margin and center horizontally */
+}
+.song-info {
+  width: 200px; /* Fixed width, adjust if necessary */
+  min-height: 40px; /* Minimum height to accommodate padding */
+  text-align: center; /* Center the text */
+  padding: 10px 0; /* Top and bottom padding, consider reducing if space is tight */
+  background-color: #f1c40f; /* Background color to match the selector */
+  color: #000; /* Text color for visibility */
+  font-size: 1rem; /* Start with 1rem and adjust based on your design needs */
+  margin-top: 10px; /* Space from the dropdown to the info */
+  margin-left: 40px; /* Center-align the box if needed */
+  margin-right: auto; /* Center-align the box if needed */
+  border-radius: 5px; /* Rounded corners for aesthetics */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Optional: adds subtle depth */
+}
+
+#currentSong {
+  font-weight: bold; /* Keep the text bold */
+  color: #e63946; /* Bright color for emphasis */
+}
+.posterDisplay {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.posterDisplay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  backdrop-filter: blur(5px); /* Blurry effect */
+}
+
+.posterImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
